@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Epam Login</title>
+        <link rel="stylesheet"type="text/css" href="style.css">
+       <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >-->
+    </head>
+    <body>
+
+        <div class="container">
+          <div class="header">
+            <h2>Login</h2>
+          </div>
+            <form name = "myForm"  action = "home.html" method = "post" onsubmit = "return validateForm()"  >
+
+                <div class="form_controls">
+
+                    <input type="text" placeholder="mail@example.com" name="email"  >
+
+                    <input type="password" placeholder="password" name="pswd" value="" >
+                    <input type="submit"  value ="SIGN IN" >
+
+                </div>
+
+                <div class="form_controls">
+                    <ul class="nav">
+                    <li><a href="passwordReset.html"><h5>Forgot your password?</h5></a></li>
+                    <li><a href="register.html" ><h5>Register!</h5></a></li>
+                    </ul>
+
+                  </div class="form_controls">
+                  <div>
+                    <input type="button" style="background-color: rgb(125, 4, 238);" onclick="location.href='https://facebook.com';" value="f" />
+                    <input type="button" style="background-color: rgb(238, 81, 81);" onclick="location.href='https://accounts.google.com/signin/v2/identifier?flowName=GlifWebSignIn&flowEntry=ServiceLogin';" value="g" />
+
+                    <button style="background-color:  rgb(179, 202, 75); "><span>&#60;</span>Epam login<span>&#62;</span></button><br>
+                  </div>
+                    </form>
+            </form>
+
+        </div>
+    </body>
+    <script type="text/javascript">
+        function validateForm() {
+            var address = document.myForm.email.value;
+            var pswd = document.myForm.pswd.value;
+            var mailrgx = /^([a-zA-Z0-9\.-]+)@([a-zA-Z0-9\-]+).([a-z]{2,3})$/;
+            if(address.trim() == "" || address.trim() == null) {
+                alert("Email address cannot be empty or contain spaces");
+                return false;
+            }
+            if(pswd.trim() == "") {
+                alert("Password cannot be empty or contain spaces");
+                return false;
+            }
+            if(pswd.length < 6) {
+                alert("Password must be atleast 6 characters");
+                return false;
+            }
+        }
+    </script>
+
+</html>

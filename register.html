@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Registeration</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet"type="text/css" href="style.css">
+    </head>
+    <body>
+
+
+          <div class="container">
+            <form name = "register_form"  action="home.html" method="post" onsubmit = "return validateFormDetails()" >
+              <h2>Register</h2>
+                <div class="form_controls">
+
+
+                   <label for="email">Email :</label><br>
+                   <input type="text" placeholder="mail@domain.com" id ="email" name="email" ><br>
+                   <p id = "emailerror" class="text-danger"></p>
+                 </div>
+
+                 <div class="form_controls">
+                    <label for="pswd">Password : </label><br>
+                    <input type="password" placeholder="password" id="pswd1" name="pswd1"><br>
+                    <p id = "pswd1error" class="text-danger "></p>
+                  </div>
+
+                  <div class="form_controls">
+                     <label for="pswd">Confirm password : </label><br>
+                     <input type="password" placeholder="password" id="pswd2" name="pswd2"><br>
+                    <p id = "pswd2error" class="text-danger" ></p>
+                   </div>
+
+                  <div class="form_controls">
+                    <label for="phno">Phone number : </label><br>
+                    <input type="phone" placeholder="Enter a 10 digit phone number" id = 'phno' name="phno"  ><br>
+                    <p id = "phnoerror" class="text-danger"></p>
+                  </div>
+
+                    <input type="submit"  value ="Register" >
+            </form>
+          </div>
+
+          <script type = "text/javascript">
+          function validateFormDetails() {
+              var inputAddress = document.getElementById('email').value;
+              var inputPswd1 = document.getElementById('pswd1').value;
+              var inputPswd2 = document.getElementById('pswd2').value;
+              var phoneNo = document.getElementById('phno').value;
+              var phnoregx = /^[6-9]\d{9}$/
+              var valid = true;
+              var mailrgx = /^([a-zA-Z0-9\.-]+)@([a-zA-Z0-9\-]+).([a-z]{2,3})$/;
+              if(mailrgx.test(inputAddress) && inputAddress.length!= 0 ) {
+                document.getElementById('emailerror').innerText = "";
+                valid = true;
+              }else {
+                document.getElementById('emailerror').innerText = "Invalid email address";
+
+                return false;
+              }
+              if(inputPswd1.length> 6 && inputPswd1.length != 0) {
+                document.getElementById('pswd1error').innerText = "";
+                valid = true;
+              }else {
+                document.getElementById('pswd1error').innerText = "Password must be atleast six characters long";
+
+                return false;
+              }
+
+              if(inputPswd2.match(inputPswd1)) {
+                document.getElementById('pswd2error').innerText="";
+                valid = true;
+              }else {
+                document.getElementById('pswd2error').innerText="Password should be same";
+                return false;
+              }
+              if (phnoregx.test(phoneNo)) {
+                document.getElementById('phnoerror').innerText="";
+                valid = true;
+              }else {
+                document.getElementById('phnoerror').innerText="Invalid phone number";
+                return false;
+              }
+              return valid;
+            }
+          </script>
+    </body>
+
+</html>
